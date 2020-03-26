@@ -1,0 +1,49 @@
+{
+  "name": "covid19-model",
+  "description": "Topic model created from the COVID-19 Open Research Dataset (CORD-19), a free resource of over 44,000 scholarly articles, including over 29,000 with full text, about COVID-19 and the coronavirus family of viruses for use by the global research community.",
+  "contactEmail": "cbadenes@gmail.com",
+  "version": "0.1",
+  "annotate":false,
+  "parameters": {
+    "maxdocratio": "0.7",
+    "minfreq": "50",
+    "multigrams": "false",
+    "retries":"10",
+    "seed":"1066",
+    "alpha": "0.1",
+    "beta":"0.01",
+    "language": "en",
+    "iterations":"1000",
+    "lowercase":"false",
+    "topwords":"25",
+    "autolabels":"true",
+    "autowords":"false",
+    "stopwords":"",
+    "stoplabels":"",
+    "pos":""
+  },
+  "docker": {
+    "email": "cbadenes@gmail",
+    "password": "secret",
+    "repository": "librairy/covid19-model",
+    "user": "cbadenes"
+  },
+  "dataSource": {
+    "name":"covid",
+    "cache": false,
+    "dataFields": {
+      "id": "id",
+      "labels": [
+        "labels5_t"
+      ],
+      "text": [
+        "abstract_t","txt_t"
+      ]
+    },
+    "filter":"(abstract_t:[* TO *] || txt_t:[* TO *]) && labels5_t:[* TO *]",
+    "format": "SOLR_CORE",
+    "offset": 0,
+    "size": -1,
+    "url": "http://librairy.linkeddata.es/solr/covid"
+  }
+}
