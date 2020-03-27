@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+
+<!--load scripts at the bottom-->
+<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery-migrate/1.2.1/jquery-migrate.min.js"></script>
+
+<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery.ba-bbq/1.2.1/jquery.ba-bbq.min.js"></script>
+
+
+<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+
+<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/handlebars.js/1.0.0/handlebars.min.js"></script>
+
+<head>
+    <title>librAIry CORD19 Explorer</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="https://www.dropbox.com/s/48zeo61kdrgiggl/librairy-logo655x654.png?raw=1">
+    <!-- Bootstrap -->
+    <link href="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.2/css/bootstrap-responsive.min.css" rel="stylesheet" media="screen">
+    <link href="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.2/css/bootstrap.min.css" rel="stylesheet" media="screen">
+
+    <link href="css/solrstrap.css" rel="stylesheet" media="screen">
+</head>
+
+<body screen_capture_injected="true">
+
+    <!--actual visible HTML-->
+    <div class="navbar navbar-fixed-top">
+        <div class="navbar-inner">
+            <div class="container">
+                <a class="brand" href="http://librairy.linkeddata.es" target="_blank"><img src="https://www.dropbox.com/s/n2cszs9smkypkwg/powered-by-librairy.png?raw=1" width="100" height="60" title="librAIry-CORD19-explorer" opacity="1.0" alpha="1.0" alt="logo"></a>
+                <form class="navbar-search" style="float:right">
+                    <div id="search-div">
+                        <input type="text" class="search-query span8" placeholder="*" value="*" onfocus="this.value = this.value;" id="solrstrap-searchbox" name="q">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div id="solrstrap-facets" class="span3"></div>
+            <div id="solrstrap-hits" class="span9"></div>
+        </div>
+    </div>
+
+
+    <!--Handlebars layout templates-->
+    <script type="text/x-handlebars-template" id="hit-template">
+      <tr>
+        <td>
+        <div class="entry">
+        {{#if link}}
+        <a href='#' title='{{link}}'>{{title}}</a>
+        {{{text}}}
+        {{else}}
+          {{{title}}}
+        {{{text}}}
+        {{/if}}
+        </div>
+      </td>
+      <td>
+        <div>
+          {{#if endpoint}}
+            <a href="{{endpoint}}" target="_blank"><img src="https://www.dropbox.com/s/0vz7goxk5oy2367/paper-documents-sheets-512.png?raw=1" width="120" title="document" alt="book"></a><br>
+          {{/if}}
+        </div>
+      </td>
+      </tr>
+    </script>
+
+    <!-- summary -->
+    <script type="text/x-handlebars-template" id="result-summary-template">
+        <div id="result-summary">
+          {{totalresults}} results for <strong><i>{{query}}</i></strong>
+        </div>
+    </script>
+
+    <!-- Facets -->
+    <script type="text/x-handlebars-template" id="nav-template">
+        <div class="facet">
+    <span class="nav-title" data-facetname="{{title}}">{{facet_displayname title}}</span><br>
+    {{#each navs}}
+    <!--<a href='#' title='{{@key}} ({{this}})'>{{@key}}</a> ({{@key}})<br/>-->
+    <a href='#' title='{{this.[0]}} ({{this.[1]}})'>{{this.[0]}}</a> ({{this.[1]}})<br/>
+    {{/each}}
+    </div>
+    </script>
+
+    <!-- Filters -->
+    <script type="text/x-handlebars-template" id="chosen-nav-template">
+        <div class="chosen-facet">
+        <span class="nav-title">Filters</span><br>
+        {{#each this}}
+        <a class="close" href="#">&times;</a>
+        <a href='#' class="selectedNav"
+           data-filter="{{name}}:{{value}}"
+           title="{{facet_displayname name}}:{{value}}">{{facet_displayname name}}:{{value}}</a><br>
+        {{/each}}
+        </div>
+    </script>
+
+    <!-- suggestions -->
+    <script type="text/x-handlebars-template" id="chosen-doc-template">
+        <div class="chosen-doc">
+        <span class="nav-title">Suggestions</span><br>
+        {{#each this}}
+        <a class="close" href="#">&times;</a>
+        <a href='#' class="selectedDoc"
+           data-filter="{{name}}:{{value}}"
+           title="{{name}}:{{value}}">{{name}}:{{value}}</a><br>
+        {{/each}}
+        </div>
+    </script>
+
+
+<script type='text/javascript' src="js/solrstrap.js"></script>
+
+</body>
+
+</html>
