@@ -7,17 +7,17 @@ var SOLR_EXTERNAL_ENDPOINT = 'https://librairy.linkeddata.es/solr/covid'; //SELE
 var LIBRAIRY_ENDPOINT = 'http://librairy.linkeddata.es/api/ranks'; //SELECT endpoint
 
 var HITTITLE = 'name_s'; //Name of the title field- the heading of each hit
-var HITBODY = 'labels5_t'; //Name of the body field- the teaser text of each hit
+var HITBODY = 'topics0_t'; //Name of the body field- the teaser text of each hit
 var HITID = 'id' // Name of the id field
-var HITTEASER = 'labels5_t'; // Name of field to use for teaser
+var HITTEASER = 'topics0_t'; // Name of field to use for teaser
 var HITLINK = 'id'; // Name of field to use for link
 
 
 var HITSPERPAGE = 25; //page size- hits per page
 
-var FACETS = ['labels5_t', 'annot_cliner_problems_t', 'source_s']; //facet categories
+var FACETS = ['topics0_t', 'annot_cliner_problems_t', 'source_s']; //facet categories
 var FACETS_TITLES = {
-    'labels5': 'atc-codes',
+    'topics0_t': 'atc-codes',
     'annot_cliner_problems_t': 'symptoms',
     'source_s': 'license'
 }; // selective rename facet names for display
