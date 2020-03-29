@@ -4,7 +4,7 @@ var SOLR_ENDPOINT = 'https://librairy.linkeddata.es/solr/covid'; //SELECT endpoi
 
 var SOLR_EXTERNAL_ENDPOINT = 'https://librairy.linkeddata.es/solr/covid'; //SELECT endpoint
 
-var LIBRAIRY_ENDPOINT = 'http://librairy.linkeddata.es/api/ranks'; //SELECT endpoint
+var LIBRAIRY_ENDPOINT = 'https://librairy.linkeddata.es/api/ranks'; //SELECT endpoint
 
 var HITTITLE = 'name_s'; //Name of the title field- the heading of each hit
 var HITBODY = 'topics0_t'; //Name of the body field- the teaser text of each hit
