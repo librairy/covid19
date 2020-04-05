@@ -1,0 +1,9 @@
+annotation,frequency
+bionlp_atc2_t,5
+bionlp_atc3_t,52
+bionlp_atc4_t,135
+bionlp_atc5_t,126
+pubchem_cids_t,44
+scispacy_chemicals_t,310
+scispacy_diseases_t,326
+snomed_diseases_concept_id,25
