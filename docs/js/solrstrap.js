@@ -409,7 +409,7 @@ function buildSolrParams(q, fq, dq, offset) {
     if (FACETS.length > 0) {
         ret['facet'] = 'true';
         ret['facet.mincount'] = '1';
-        ret['facet.limit'] = '20';
+        ret['facet.limit'] = '50';
         ret['facet.field'] = FACETS;
     }
     if (fq.length > 0) {
